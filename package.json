@@ -1,0 +1,26 @@
+{
+  "name": "projet-prod-1",
+  "version": "1.0.0",
+  "description": "Plateforme pour les skieurs de poudreuse",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeff-Dok/Projet-Prod-1.git"
+  },
+  "author": "Équipe #6",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeff-Dok/Projet-Prod-1/issues"
+  },
+  "homepage": "https://github.com/Jeff-Dok/Projet-Prod-1#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "ejs": "^3.1.6",
+    "espress": "^0.0.0",
+    "http-status-codes": "^2.2.0"
+  }
+}

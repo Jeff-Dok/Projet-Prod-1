@@ -45,8 +45,7 @@
                     <div class="col-6">
                         <div class="box-connexion-profile-droite pageProfilInside">
                             <h3>Ton profil de skieur</h3>
-                            <h1>Name here</h1>
-                            <h2>Pseudo</h2>
+                            <h1><%= data.name %></h1>
 
                             <div class="box-connexion-profile-inside-description">
                                 <span>Description</span>
@@ -61,12 +60,12 @@
                                     deserunt mollit anim id est laborum."</p>
                             </div>
                             <div class="box-connexion-profile-inside-addon1">
-                                <p><span>Résidence</span> : Ville, Pays</p>
+                                <!--<p><span>Résidence</span> : Ville, Pays</p>-->
                                 <p><span>Ta pente préférée</span> : Sutton, Québec</p>
                                 <p><span>Ton niveau de skieur</span> : Novice</p>
                                 <br>
-                                <p><span>Courriel</span> : abcdce@gmail.com</p>
-                                <p><span>Site web</span> : www.abcde.com</p>
+                                <p><span>Courriel</span> : <%= data.email %></p>
+                                <!--<p><span>Site web</span> : www.abcde.com</p>-->
                             </div>
                             <div class="icon-profile-section">
                                 <img src="/img/add.png" alt="Ajoute comme ami">

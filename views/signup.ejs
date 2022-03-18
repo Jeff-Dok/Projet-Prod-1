@@ -29,15 +29,13 @@
             <h1 class="titre-signup-signin">Créer un compte</h1>
         </div>
         <div class="col-12 flex-container-signup-signin">
-            <form method="" action="/signin" class="box-signup-signin height-signup">
-                <label for="courriel">Votre courriel</label>
-                <input type="text" id="courriel" name="courriel">
-                <label for="pseudo">Votre pseudo</label>
-                <input type="text" id="pseudo" name="pseudo">
-                <label for="mdp">Mot de passe</label>
-                <input type="text" id="mdp" name="mdp">
-                <label for="confirm">Confirmation du mot de passe</label>
-                <input type="text" id="confirm" name="confirm">
+            <form method="post" action="/signup" class="box-signup-signin height-signup">
+                <label for="email">Votre courriel</label>
+                <input type="text" id="email" name="email">
+                <label for="name">Votre nom</label>
+                <input type="text" id="name" name="name">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password">
                 <button type="submit">Créer un compte</button>
                 <p>Vous avez déjà un compte? <span><a href="/signin">Connexion</a></span></p>
             </form>

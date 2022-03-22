@@ -32,6 +32,10 @@ exports.sendProfile = (request, response) => {
     }
 };
 
+exports.sendError = (request, response) => {
+    response.render("error");
+};
+
 exports.postSignin = ("/signin", (req, rep) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -71,14 +75,10 @@ exports.postSignin = ("/signin", (req, rep) => {
                     req.session.profileData = response.data;
                     rep.redirect("profile");
                 })
-                .catch(function (error) {
-                    console.log(error);
-                });
+                .catch(error => rep.redirect("error"));
         })
 
-        .catch(function (error) {
-            console.log(error);
-        });
+        .catch(error => rep.redirect("error"));
 });
 
 exports.postSignup = ("/signup", (req, rep) => {
@@ -137,16 +137,9 @@ exports.postSignup = ("/signup", (req, rep) => {
                             req.session.profileData = response.data;
                             rep.redirect("profile");
                         })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
+                        .catch(error => rep.redirect("error"));
                 })
-
-                .catch(function (error) {
-                    console.log(error);
-                });
+                .catch(error => rep.redirect("error"));
         })
-        .catch(function (error) {
-            console.log(error);
-        });
+        .catch(error => rep.redirect("error"));
 });

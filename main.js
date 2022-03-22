@@ -24,6 +24,7 @@ app.get("/index", homeController.getRedirect);
 app.get("/signup", homeController.sendSignup);
 app.get("/signin", homeController.sendSignin);
 app.get("/profile", homeController.sendProfile);
+app.get("/error", homeController.sendError);
 
 app.post("/signin", homeController.postSignin);
 

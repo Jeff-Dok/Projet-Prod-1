@@ -14,18 +14,18 @@
 <body class="flex-container-between">
     <header>
         <nav>
-            <div class="logo"><img src="/img/logo-p.png"></div>
-           <div class="main_menu">
-               <a href="/"><img src="/img/home.png" alt="home"></a>
-               <a href="#"><img src="/img/chat.png" alt="chat"></a>
-               <a href="/profile"><img src="/img/profil.png" alt="profil"></a>
-               <a href="#"><img src="/img/spot.png" alt="spot"></a>
-           </div>
-           <form class="flex-container">
-            <input class="me-2 search-nav" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn" type="submit"><img src="/img/search.png" alt="search"></button>
-          </form>
-     </nav>
+            <div class="logo"><a href="/"><img src="/img/logo-p.png"></a></div>
+            <div class="main_menu">
+                <a href="/"><img src="/img/home.png" alt="home"></a>
+                <a href="#"><img src="/img/chat.png" alt="chat"></a>
+                <a href="/profile"><img src="/img/profil.png" alt="profil"></a>
+                <a href="#"><img src="/img/spot.png" alt="spot"></a>
+            </div>
+            <form class="flex-container">
+                <input class="me-2 search-nav" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn" type="submit"><img src="/img/search.png" alt="search"></button>
+            </form>
+        </nav>
     </header>
 
     <main class="profile">
@@ -46,7 +46,9 @@
                     <div class="col-6">
                         <div class="box-connexion-profile-droite pageProfilInside">
                             <h3>Ton profil de skieur</h3>
-                            <h1><%= data.name %></h1>
+                            <h1>
+                                <%= data.name %>
+                            </h1>
 
                             <div class="box-connexion-profile-inside-description">
                                 <span>Description</span>
@@ -64,7 +66,8 @@
                                 <p><span>Ta pente préférée</span> : Sutton, Québec</p>
                                 <p><span>Ton niveau de skieur</span> : Novice</p>
                                 <br>
-                                <p><span>Courriel</span> : <%= data.email %></p>
+                                <p><span>Courriel</span> : <%= data.email %>
+                                </p>
                             </div>
                             <div class="icon-profile-section">
                                 <img src="/img/add.png" alt="Ajoute comme ami">

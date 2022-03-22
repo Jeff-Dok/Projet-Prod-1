@@ -1,36 +1,6 @@
-////////////////// !!!!!!! ENLEVER TOUS LES COMMENTAIRES AVANT DE PUBLIER LE FINAL !!!!!!! ////////////////// 
-
-////////////////// CODE PRÉAJUSTEMENTS DE VENDREDI SOIR ////////////////// 
-/*const express = require('express');
-const app = express();
-const axios = require('axios');
-app.set('view engine', 'ejs');
-
-app.use(express.urlencoded({
-    extended: true
-}));
-app.use(express.json());
-
-exports.getRedirect = (req, rep) => {
-    rep.redirect("/");
-}
-exports.sendIndex = (request, response) => {
-    response.render("index");
-};
-exports.sendSignup = (request, response) => {
-    response.render("signup");
-};
-exports.sendSignin = (request, response) => {
-    response.render("signin");
-};
-exports.sendProfile = (request, response) => {
-    response.render("profile");
-};*/
-
-////////////////// CODE AJUSTÉ DE VENDREDI SOIR ////////////////// 
 const express = require('express');
 const app = express();
-//const axios = require('axios');
+const axios = require('axios');
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({
@@ -61,3 +31,122 @@ exports.sendProfile = (request, response) => {
         });
     }
 };
+
+exports.postSignin = ("/signin", (req, rep) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    const data = {
+        email: email,
+        password: password,
+    };
+    const config = {
+        method: "post",
+        url: "https://ski-api.herokuapp.com/login",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        },
+        data: data,
+    };
+    axios(config)
+        .then(function (response) {
+            let token = response.data.token;
+            const data = {
+                token: token,
+            };
+            req.session.skiApiToken = token;
+            const config = {
+                method: "get",
+                url: "https://ski-api.herokuapp.com/tokenInfo",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: token,
+                    Accept: "application/json",
+                },
+                data: data,
+            };
+
+            axios(config)
+                .then(function (response) {
+                    req.session.profileData = response.data;
+                    rep.redirect("profile");
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        })
+
+        .catch(function (error) {
+            console.log(error);
+        });
+});
+
+exports.postSignup = ("/signup", (req, rep) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    //
+
+    const initialData = {
+        name: name,
+        email: email,
+        password: password,
+    };
+
+    const config = {
+        method: "post",
+        url: "https://ski-api.herokuapp.com/signup",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        },
+        data: initialData,
+    };
+
+    axios(config)
+        .then(function () {
+            const config = {
+                method: "post",
+                url: "https://ski-api.herokuapp.com/login",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                data: initialData,
+            };
+            axios(config)
+                .then(function (response) {
+                    let token = response.data.token;
+                    const data = {
+                        token: token,
+                    };
+                    req.session.skiApiToken = token;
+                    const config = {
+                        method: "get",
+                        url: "https://ski-api.herokuapp.com/tokenInfo",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: token,
+                            Accept: "application/json",
+                        },
+                        data: data,
+                    };
+
+                    axios(config)
+                        .then(function (response) {
+                            req.session.profileData = response.data;
+                            rep.redirect("profile");
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                })
+
+                .catch(function (error) {
+                    console.log(error);
+                });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+});

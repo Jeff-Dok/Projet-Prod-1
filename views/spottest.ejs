@@ -27,16 +27,48 @@
             </form>
         </nav>
     </header>
-    <main>
-        <div class="container flex-container">
-            <div class="box-error">
-                <p>
-                    <%= data.name %>
-                    <%= data.description %>
-                    <%= data.address %>
-                    <%= data.difficulty %>
-                   <!-- <%= data.coordinates %>-->
-                </p>
+    <main class="spotAjoute">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 flex-container">
+
+                    <div class="col-6">
+                        <div class="box-connexion-profile-gauche pageProfilInside">
+                            <img src="img/mountain.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="box-connexion-profile-droite pageProfilInside">
+                            <h3>C'est fait !</h3>
+                            <h1>
+                                Ton spot est ajouté !
+                            </h1>
+
+                            <div class="box-connexion-profile-inside-description">
+                                <span>Détail de ton spot :</span>
+                                <p> <br>
+                                  <span>Nom : </span><%= data.name %> <br>
+                                    <span>Description : </span><%= data.description %> <br>
+                                    <span>Adresse : </span><%= data.address %> <br>
+                                    <span>Niveau de difficulté : </span><%= data.difficulty %> <br>
+                                    <!-- <%= data.coordinates %>-->
+                                </p>
+                            </div>
+                            <div class="box-connexion-profile-inside-addon1">
+                                <p><span>EDIT Le Spot</span></p>
+                            </div>
+
+                            <div class="box-connexion-profile-inside-addon1">
+                                <p><span>DELETE Ton Spot</span></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>

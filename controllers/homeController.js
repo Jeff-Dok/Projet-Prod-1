@@ -11,6 +11,7 @@ app.use(express.json());
 exports.getRedirect = (req, rep) => {
     rep.redirect("/");
 }
+
 exports.sendIndex = (request, response) => {
     response.render("index");
 };
@@ -56,43 +57,43 @@ exports.sendSpot = (request, response) => {
 };
 
 exports.postSpotForm = ("/spotform", (req, rep) => {
-        const name = req.body.name;
-        const description = req.body.description;
-        const address = req.body.address;
-        const difficulty = req.body.difficulty;
-        //const coordinates = req.body.coordinates;
-        const data = {
-            name: name,
-            description: description,
-            address: address,
-            difficulty: difficulty,
-            //coordinates: coordinates
-        };
+    const name = req.body.name;
+    const description = req.body.description;
+    const address = req.body.address;
+    const difficulty = req.body.difficulty;
+    //const coordinates = req.body.coordinates;
+    const data = {
+        name: name,
+        description: description,
+        address: address,
+        difficulty: difficulty,
+        //coordinates: coordinates
+    };
 
-        let token = req.session.skiApiToken;
+    let token = req.session.skiApiToken;
 
-        const config = {
-            method: "post",
-            url: "https://ski-api.herokuapp.com/ski-spot",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                Authorization: token,
-            },
-            data: data,
-        };
-        
-        axios(config)
-            .then(function (response) {
-                console.log("Storing data in session: " + data);
-                req.session.spotData = response.data.skiSpot;
-                rep.redirect("spottest");
-            })
+    const config = {
+        method: "post",
+        url: "https://ski-api.herokuapp.com/ski-spot",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: token,
+        },
+        data: data,
+    };
 
-    .catch(error => {
-        console.log("error is " + error);
-        rep.redirect("error")
-    }); 
+    axios(config)
+        .then(function (response) {
+            console.log("Storing data in session: " + data);
+            req.session.spotData = response.data.skiSpot;
+            rep.redirect("spottest");
+        })
+
+        .catch(error => {
+            console.log("error is " + error);
+            rep.redirect("error")
+        });
 });
 
 //////////////////////////////////////////

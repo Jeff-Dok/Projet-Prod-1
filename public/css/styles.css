@@ -430,3 +430,16 @@ footer div {
     text-align: center;
     font-size: 1.5em;
 }
+
+/* PAGE SPOT AJOUTE */
+.spotAjoute .box-connexion-profile-inside-description{
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.spotAjoute .box-connexion-profile-inside-addon1{
+    align-items: center;
+    justify-content: center;
+    padding-top: 1.5rem; 
+}

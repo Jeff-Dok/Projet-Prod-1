@@ -31,11 +31,15 @@
                                 </p>
                             </div>
                             <div class="box-connexion-profile-inside-addon1">
-                                <p><span>EDIT Le Spot</span></p>
-                            </div>
+
+                                <form style="display: inline;" action="/editSpot" method="get">
+                                    <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">EDIT</button>
+                                </form> </div>
 
                             <div class="box-connexion-profile-inside-addon1">
-                                <p><span>DELETE Ton Spot</span></p>
+                                <form style="display: inline;" action="/delete/<%= data.id %>?_method=DELETE" method="POST">
+                                    <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
+                                </form>
                             </div>
 
                         </div>

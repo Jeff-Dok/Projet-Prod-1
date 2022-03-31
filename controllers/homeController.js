@@ -37,9 +37,7 @@ exports.sendError = (request, response) => {
     response.render("error");
 };
 
-//////////////////////////////////////////
-//////////////////////////////////////////
-////////////////ZONE SPOT/////////////////
+///////////////////ZONE SPOT////////////////////
 
 exports.sendSpotForm = (request, response) => {
     response.render("spotform")
@@ -96,9 +94,83 @@ exports.postSpotForm = ("/spotform", (req, rep) => {
         });
 });
 
-//////////////////////////////////////////
-//////////////////////////////////////////
-//////////////////////////////////////////
+//////////////////////////////////////////////
+
+
+////////////////ZONE ALL SPOT/////////////////
+
+//////////////////////////////////////////////
+
+
+
+
+
+
+
+////////////////ZONE EDIT SPOT/////////////////
+exports.editSpot = (request, response) => {
+    response.render("editSpot")
+};
+
+exports.sendNewSpot = (request, response) => {
+    const data = request.body.editspotData;
+    if (data == undefined) {
+        response.redirect("editSpot");
+    } else {
+        response.render("spottest", {
+            'data': data
+        });
+    };
+};
+
+exports.putNewDataSpot = ("/editSpot", (req, rep) => {
+    const name = req.body.name;
+    const description = req.body.description;
+    const address = req.body.address;
+    const difficulty = req.body.difficulty;
+    const data = {
+        name: name,
+        description: description,
+        address: address,
+        difficulty: difficulty,
+        _id: id,
+    };
+
+    let token = req.session.skiApiToken;
+
+    const config = {
+        method: "get",
+        url: "https://ski-api.herokuapp.com/ski-spot/`${data.id}`",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: token,
+        },
+        data: data,
+    };
+
+    axios(config)
+        .then(function (response) {
+            console.log("Storing data in session: " + data);
+            req.session.editspotData = response.data.skiSpot;
+            rep.redirect("spottest");
+        })
+
+        .catch(error => {
+            console.log("error is " + error);
+            rep.redirect("error")
+        });
+});
+
+///////////////////////////////////////////////
+
+
+
+
+
+
+
+
 
 exports.postSignin = ("/signin", (req, rep) => {
     const email = req.body.email;

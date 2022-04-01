@@ -46,14 +46,17 @@ html {
     width: 100%;
     height: 100%;
 }
-@media (min-width:1600px){
+
+@media (min-width:1600px) {
     .logo-container img {
         width: 25%;
     }
+
     .box-connexion {
-        padding:1.5rem;
+        padding: 1.5rem;
     }
 }
+
 body {
     background-color: rgba(54, 44, 54, 0.3) !important;
     background-image: var(--bg-2);
@@ -62,6 +65,7 @@ body {
     width: 100%;
     height: 100%;
     background-size: cover;
+    background-attachment: fixed;
 }
 header {
     width: 100%;
@@ -70,32 +74,39 @@ header {
     background-color: var(--bg-blur);
     text-align: center;
 }
+
 nav {
     margin: 5px;
     display: flex;
     justify-content: space-between;
 }
+
 nav .logo img {
     height: 100%;
 }
+
 nav .logo {
     width: 15%;
 }
+
 nav form {
     width: 15%;
 }
+
 nav .main_menu {
     display: flex;
     align-items: center;
     width: 70%;
     justify-content: center;
 }
+
 nav .main_menu a {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 15px;
 }
+
 .search-nav {
     height: 25px !important;
     background-color: var(--bg-blur) !important;
@@ -103,6 +114,7 @@ nav .main_menu a {
     border: 1px solid var(--lightblue) !important;
     padding: 5px !important;
 }
+
 footer {
     display: flex;
     justify-content: space-between;
@@ -113,6 +125,7 @@ footer {
     margin: 0 auto;
     margin-bottom: 10px;
 }
+
 footer div {
     color: var(--lightblue);
     font-family: GothamB;
@@ -121,16 +134,19 @@ footer div {
     font-size: 8px;
     text-shadow: var(--shadow);
 }
+
 .flex-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .flex-container-between {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
 .logo-container {
     height: 100%;
     width: auto;
@@ -144,6 +160,7 @@ footer div {
     max-width: 35%;
     height: auto;
 }
+
 .presentation {
     margin-top: 1.5em;
     margin-bottom: 2em;
@@ -153,18 +170,20 @@ footer div {
     text-shadow: var(--shadow);
     text-align: center;
 }
+
 .presentation span {
     font-family: GrandH;
     font-size: 22px;
     color: var(--lightblue);
     text-transform: uppercase;
 }
+
 .box-connexion {
-    max-width:450px;
+    max-width: 450px;
     width: 100%;
-    max-height:400px;
+    max-height: 400px;
     height: 100%;
-    min-height:300px;
+    min-height: 300px;
     backdrop-filter: var(--blur);
     background-color: var(--cream-o);
     border-radius: var(--radius);
@@ -173,16 +192,19 @@ footer div {
     align-items: center;
     justify-content: space-evenly;
 }
+
 .box-connexion div {
     font-family: GothamL;
     font-size: 14px;
     color: var(--darkblue);
     text-align: center;
 }
+
 .box-connexion div span {
     font-family: GothamB;
     font-size: 14px;
 }
+
 .box-connexion button {
     border-radius: var(--radius);
     background-color: var(--darkblue);
@@ -193,6 +215,7 @@ footer div {
     border: none;
     width: 165px;
 }
+
 /* SIGN UP et SIGN IN */
 .flex-container-titre-form {
     display: flex;
@@ -200,21 +223,26 @@ footer div {
     align-items: center;
     margin-bottom: 12px;
 }
+
 .titre-signup-signin {
     font-family: GrandH;
     color: var(--lightblue);
 }
+
 .flex-container-signup-signin {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .height-signup {
     height: 550px;
 }
+
 .height-signin {
     height: 350px;
 }
+
 .box-signup-signin {
     width: 27%;
     backdrop-filter: var(--blur);
@@ -224,6 +252,7 @@ footer div {
     flex-direction: column;
     font-size: 18px;
 }
+
 .box-signup-signin label {
     margin-bottom: 3px;
     margin-left: 55px;
@@ -231,6 +260,7 @@ footer div {
     font-family: GrandH;
     text-align: left;
 }
+
 .box-signup-signin input {
     margin: 0px auto;
     border-radius: var(--radius);
@@ -241,9 +271,11 @@ footer div {
     font-size: 16px;
     outline: 1px solid var(--darkblue);
 }
+
 .box-signup-signin input:focus {
     outline: 4px solid var(--lightblue);
 }
+
 .box-signup-signin button {
     font-family: GrandH;
     margin: 40px auto 30px;
@@ -432,14 +464,54 @@ footer div {
 }
 
 /* PAGE SPOT AJOUTE */
-.spotAjoute .box-connexion-profile-inside-description{
+.spotAjoute .box-connexion-profile-inside-description {
     align-items: center;
     justify-content: center;
     padding-top: 1rem;
 }
 
-.spotAjoute .box-connexion-profile-inside-addon1{
+.spotAjoute .box-connexion-profile-inside-addon1 {
     align-items: center;
     justify-content: center;
-    padding-top: 1.5rem; 
+    padding-top: 1.5rem;
+}
+
+/* PAGE SPOT FEED */
+.container-feed {
+    width: 100%;
+    background-color: var(--cream-o);
+    border-radius: var(--radius);
+    display: flex;
+    padding: 1.5rem;
+    flex: 1 1 auto;
+    margin: 1.5rem auto;
+}
+
+.container-feed img {
+    max-width: 30%;
+    min-width: 20%;
+    width: 100%;
+    height: 250px;
+    border-radius: var(--radius);
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+.container-feed div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.container-feed div span {
+    text-transform: uppercase;
+    font-family: GothamB;
+    font-size: 1em;
+    color: var(--darkblue);
+}
+
+.container-feed div p {
+    font-family: GothamL;
+    font-size: 0.75em;
+    color: var(--darkblue);
 }

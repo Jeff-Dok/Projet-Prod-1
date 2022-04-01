@@ -32,6 +32,7 @@ app.post("/signup", homeController.postSignup);
 /////////spot/////////////////
 app.get("/spotform", homeController.sendSpotForm);
 app.get("/spottest", homeController.sendSpot);
+app.get("/allspot", homeController.getAllSpot);
 
 app.get("/editSpot/:id", homeController.editSpot);
 

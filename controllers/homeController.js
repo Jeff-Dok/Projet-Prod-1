@@ -37,6 +37,8 @@ exports.sendError = (request, response) => {
     response.render("error");
 };
 
+//--------------------------------------------------------------------------------------------------------------------//
+
 ///////////////////ZONE SPOT////////////////////
 
 exports.sendSpotForm = (request, response) => {
@@ -96,23 +98,55 @@ exports.postSpotForm = ("/spotform", (req, rep) => {
 
 //////////////////////////////////////////////
 
+//--------------------------------------------------------------------------------------------------------------------//
 
 ////////////////ZONE ALL SPOT/////////////////
 
+exports.getAllSpot = (req, rep) => {
+
+    let token = req.session.skiApiToken;
+
+    const config = {
+        method: "get",
+        url: "https://ski-api.herokuapp.com/ski-spot",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: token,
+        },
+        //data: data,
+    };
+
+    axios(config)
+        .then(function (resultat) {
+            req.session.spotData = resultat.data.skiSpots;
+            let showSpots = resultat.data.skiSpots;
+            console.log("Storing data in session: " + resultat.data.skiSpots);
+            console.log(showSpots);
+            rep.render("allspot", {
+                showSpots
+            });
+        })
+
+        .catch(error => {
+            console.log("error is " + error);
+            rep.redirect("error")
+        });
+};
+
 //////////////////////////////////////////////
 
-
-
-
-
-
+//--------------------------------------------------------------------------------------------------------------------//
 
 ////////////////ZONE EDIT SPOT/////////////////
+
+// NON COMPLET! // 
+
 exports.editSpot = (request, response) => {
     response.render("editSpot")
 };
 
-exports.sendNewSpot = (request, response) => {
+/*exports.sendNewSpot = (request, response) => {
     const data = request.body.editspotData;
     if (data == undefined) {
         response.redirect("editSpot");
@@ -160,17 +194,13 @@ exports.putNewDataSpot = ("/editSpot", (req, rep) => {
             console.log("error is " + error);
             rep.redirect("error")
         });
-});
+});*/
 
 ///////////////////////////////////////////////
 
+//--------------------------------------------------------------------------------------------------------------------//
 
-
-
-
-
-
-
+////////////////ZONE SIGN IN/////////////////
 
 exports.postSignin = ("/signin", (req, rep) => {
     const email = req.body.email;
@@ -216,6 +246,12 @@ exports.postSignin = ("/signin", (req, rep) => {
 
         .catch(error => rep.redirect("error"));
 });
+
+///////////////////////////////////////////////
+
+//--------------------------------------------------------------------------------------------------------------------//
+
+////////////////ZONE SIGN UP/////////////////
 
 exports.postSignup = ("/signup", (req, rep) => {
     const name = req.body.name;
@@ -279,3 +315,5 @@ exports.postSignup = ("/signup", (req, rep) => {
         })
         .catch(error => rep.redirect("error"));
 });
+
+///////////////////////////////////////////////

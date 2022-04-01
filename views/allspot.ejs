@@ -1,0 +1,28 @@
+<%- include("partials/header") -%>
+
+
+<main class="spotFeed">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 flex-container-between">
+                <% showSpots.forEach(e => { %>
+                <div class="container-feed">
+                    <img src="/img/mountain.jpg" alt="montagne">
+                    <div>
+                        <h3><%= e.name %></h3>
+                        <span>Description :</span>
+                        <p><%= e.description %></p>
+                        <span>Difficulté :</span>
+                        <p><%= e.difficulty %></p>
+                        <span>Adresse :</span>
+                        <p><%= e.address %></p>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<%- include("partials/footer") -%>

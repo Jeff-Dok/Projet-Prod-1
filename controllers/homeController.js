@@ -112,9 +112,8 @@ exports.getAllSpot = (req, rep) => {
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            Authorization: token,
+            Authorization: token
         },
-        //data: data,
     };
 
     axios(config)

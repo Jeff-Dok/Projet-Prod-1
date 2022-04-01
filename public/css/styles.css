@@ -73,6 +73,20 @@ header {
     backdrop-filter: var(--blur);
     background-color: var(--bg-blur);
     text-align: center;
+    position: fixed;
+    z-index: 10;
+}
+
+.bobaFett{
+    margin-top: 4.5rem;
+}
+
+.mando{
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
 }
 
 nav {

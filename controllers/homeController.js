@@ -34,17 +34,6 @@ exports.sendProfile = (request, response) => {
     }
 };
 
-exports.sendID = (request, response) => {
-    const data = request.session.spotData;
-    if (data == undefined) {
-        response.redirect("allspot");
-    } else {
-        response.render("spotdetail", {
-            'showSpots': data
-        });
-    };
-};
-
 exports.sendError = (request, response) => {
     response.render("error");
 };
@@ -95,7 +84,6 @@ exports.postSpotForm = ("/spotform", (req, rep) => {
 
     axios(config)
         .then(function (response) {
-            console.log("Storing data in session: " + data);
             req.session.spotData = response.data.skiSpot;
             rep.redirect("spottest");
         })
@@ -115,10 +103,10 @@ exports.getAllSpot = (req, rep) => {
     let token = req.session.skiApiToken;
 
     let pageNB = req.query.page || 1;
- 
+
     const config = {
         method: "get",
-        url: "https://ski-api.herokuapp.com/ski-spot?limit=10&page=" + pageNB,
+        url: "https://ski-api.herokuapp.com/ski-spot?limit=5&page=" + pageNB,
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -130,7 +118,6 @@ exports.getAllSpot = (req, rep) => {
         .then(function (resultat) {
             req.session.spotData = resultat.data.skiSpots;
             let showSpots = resultat.data.skiSpots;
-            console.log("Storing data in session: " + resultat.data.skiSpots);
             console.log(showSpots);
             rep.render("allspot", {
                 showSpots
@@ -147,6 +134,17 @@ exports.getAllSpot = (req, rep) => {
 
 ////////////////ZONE GET AN ID ON SPOT/////////////////
 
+exports.sendID = (request, response) => {
+    const data = request.session.spotData;
+    if (data == undefined) {
+        response.redirect("allspot");
+    } else {
+        response.render("spotdetail", {
+            'data': data
+        });
+    };
+};
+
 exports.getAnID_spot = (req, rep) => {
 
     let token = req.session.skiApiToken;
@@ -154,9 +152,100 @@ exports.getAnID_spot = (req, rep) => {
     const id = req.params.id;
 
     console.log("Le id est = " + req.params.id);
- 
+
     const config = {
         method: "get",
+        url: "https://ski-api.herokuapp.com/ski-spot",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: token
+        }
+    };
+
+    axios(config)
+        .then(function (response) {
+
+            req.session.spotData = response.data.skiSpots;
+
+            let showSpots = response.data.skiSpots;
+
+            console.log('LE RESULTAT DE SHOWSPOTS EST : ' + showSpots);
+            rep.render("spotdetail", {
+                showSpots
+            });
+
+        })
+
+        .catch(error => {
+            console.log("error is " + error);
+            rep.redirect("error");
+        });
+
+};
+//--------------------------------------------------------------------------------------------------------------------//
+
+////////////////ZONE EDIT SPOT/////////////////
+
+//////////////////////// !!!!!!! NON COMPLET! !!!!!!! //////////////////////// 
+
+exports.edit_spot = ("/editSpot", (req, rep) => {
+    const name = req.body.name;
+    const description = req.body.description;
+    const address = req.body.address;
+    const difficulty = req.body.difficulty;
+    const coordinates = req.body.coordinates;
+    const data = {
+        name: name,
+        description: description,
+        address: address,
+        difficulty: difficulty,
+        coordinates: coordinates
+    };
+
+    let token = req.session.skiApiToken;
+
+    const id = req.params.id;
+
+    const config = {
+        method: "put",
+        url: "https://ski-api.herokuapp.com/ski-spot/"+id,
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: token,
+        },
+        data: data,
+    };
+
+    axios(config)
+        .then(function (response) {
+            req.session.spotData = response.data.skiSpot;
+            rep.redirect("spottest");
+        })
+
+        .catch(error => {
+            console.log("error is " + error);
+            rep.redirect("error")
+        });
+});
+
+//--------------------------------------------------------------------------------------------------------------------//'
+
+////////////////ZONE DELETE SPOT/////////////////
+
+//////////////////////// !!!!!!! NON COMPLET! !!!!!!! //////////////////////// 
+
+exports.delete_spot = (req, rep) => {
+
+    let token = req.session.skiApiToken;
+
+    const id = req.params.id;
+
+    console.log("Le id est = " + req.params.id);
+
+    const config = {
+        method: "delete",
         url: "https://ski-api.herokuapp.com/ski-spot/"+id,
         headers: {
             "Content-Type": "application/json",
@@ -166,34 +255,16 @@ exports.getAnID_spot = (req, rep) => {
     };
 
     axios(config)
-        .then(function (resultat) {
+        .then(function (rep) {
+        rep.render("allspot");
 
-            let showSpots = resultat.data.skiSpots;
-
-            req.session.spotData = resultat.data.skiSpots;
-
-            //console.log('Resultat de resultat.data.skiSpots.id est = ' + resultat.data.skiSpots);
-            //console.log("Le resultat est = " + resultat);
-            //console.log("Le data est = " + showSpots);
-            //console.log("Le resultat est = " + req.session.spotData);
-            
-            rep.render("spotdetail", {showSpots});
         })
 
         .catch(error => {
             console.log("error is " + error);
-            rep.redirect("error")
+            rep.redirect("error");
         });
-};
 
-//--------------------------------------------------------------------------------------------------------------------//
-
-////////////////ZONE EDIT SPOT/////////////////
-
-// NON COMPLET! // 
-
-exports.editSpot = (request, response) => {
-    response.render("editSpot")
 };
 
 //--------------------------------------------------------------------------------------------------------------------//

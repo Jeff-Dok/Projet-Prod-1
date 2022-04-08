@@ -21,6 +21,10 @@
                         <div class="container-feed">
                             <img src="/img/mountain.jpg" alt="montagne">
                             <div>
+
+
+                                <% if (e.id == e.id) { %>
+
                                 <h3><%= e.name %></h3>
                                 <span>Description :</span>
                                 <p><%= e.description %></p>
@@ -28,10 +32,14 @@
                                 <p><%= e.difficulty %></p>
                                 <span>Adresse :</span>
                                 <p><%= e.address %></p>
+                                <span>Coordinates :</span>
+                                <p><%= e.coordinates %></p>
                                 <br>
                                 <p>RETOURNEZ VERS <span><a href="/allspot/?page=1">LE FEED</a></span></p>
                             </div>
                         </div>
+
+                        <% } %>
         
                         <% }) %>
         

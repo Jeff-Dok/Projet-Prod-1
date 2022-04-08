@@ -33,13 +33,17 @@ app.post("/signup", homeController.postSignup);
 
 /////////////////spot/////////////////
 
-app.get("/spotform", homeController.sendSpotForm);
 app.get("/spottest", homeController.sendSpot);
-app.get("/allspot", homeController.getAllSpot);
-app.get("/spotdetail", homeController.sendID);
-
+app.get("/spotform", homeController.sendSpotForm);
 app.post("/spotform", homeController.postSpotForm);
 
+app.get("/allspot", homeController.getAllSpot);
+
+//------------------------------------------------------------------------------------------------------------//
+
+/////////////////id/////////////////
+
+app.get("/spotdetail", homeController.sendID);
 app.get("/spotdetail/:id", homeController.getAnID_spot);
 
 //------------------------------------------------------------------------------------------------------------//

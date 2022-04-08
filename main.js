@@ -29,15 +29,20 @@ app.get("/error", homeController.sendError);
 app.post("/signin", homeController.postSignin);
 app.post("/signup", homeController.postSignup);
 
-/////////spot/////////////////
+//------------------------------------------------------------------------------------------------------------//
+
+/////////////////spot/////////////////
+
 app.get("/spotform", homeController.sendSpotForm);
 app.get("/spottest", homeController.sendSpot);
 app.get("/allspot", homeController.getAllSpot);
-
-app.get("/editSpot/:id", homeController.editSpot);
+app.get("/spotdetail", homeController.sendID);
 
 app.post("/spotform", homeController.postSpotForm);
-/////////////////////////////
+
+app.get("/spotdetail/:id", homeController.getAnID_spot);
+
+//------------------------------------------------------------------------------------------------------------//
 
 app.listen(3000, () => {
     console.log("Le serveur est sur le port 3000");

@@ -15,13 +15,35 @@
                         <p><%= e.difficulty %></p>
                         <span>Adresse :</span>
                         <p><%= e.address %></p>
+                        <br>
+                        <span>PLUS DE DETAILS :</span>
+                        <a href="/spotdetail/<%=e._id%>">OkylyDolyly</a>
                     </div>
                 </div>
+
                 <% }) %>
+
             </div>
+
+            <!--FAIRE UNE NOUVELLE BOUCLE ICI POUR LA PAGINATION-->
+           <nav aria-label="paginationAllSpot">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a class="page-link" href="#">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+                <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+            <!--------------------------------------------------->
+
         </div>
     </div>
-</main>
 
+</main>
 
 <%- include("partials/footer") -%>

@@ -529,3 +529,11 @@ footer div {
     font-size: 0.75em;
     color: var(--darkblue);
 }
+
+/*pagination*/
+.page {
+    display: none;
+  }
+  .page-active {
+    display: block;
+  }

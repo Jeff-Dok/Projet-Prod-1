@@ -1,63 +1,52 @@
 <%- include("partials/header") -%>
+<main class="bobaFett">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center container-profile m-3">
+            <div
+                class="col-lg-6 col-md-6 col-sm-0  d-none d-sm-block p-0 container-profile-gauche d-flex justify-content-center align-items-center">
 
-
-    <main class="profile mando">
-
-        <div class="container">
-            <div class="row">
-
-                <div class="col-12 flex-container">
-
-                    <div class="col-6">
-                        <div class="box-connexion-profile-gauche pageProfilInside">
-                            <img src="img/portrait.jpg" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="box-connexion-profile-droite pageProfilInside">
-                            <h3>Ton profil de skieur</h3>
-                            <h1>
-                                <%= data.name %>
-                            </h1>
-
-                            <div class="box-connexion-profile-inside-description">
-                                <span>Description</span>
-                                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                    nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                    officia
-                                    deserunt mollit anim id est laborum."</p>
-                            </div>
-                            <div class="box-connexion-profile-inside-addon1">
-                                <p><span>Ta pente préférée</span> : Sutton, Québec</p>
-                                <p><span>Ton niveau de skieur</span> : Novice</p>
-                                <br>
-                                <p><span>Courriel</span> : <%= data.email %>
-                                </p>
-                            </div>
-                            <div class="icon-profile-section">
-                                <img src="/img/add.png" alt="Ajoute comme ami">
-                                <img src="/img/message.png" alt="Envoi un message privé">
-                                <img src="/img/follow.png" alt="Suivre la personne">
-                            </div>
-                            <div class="icon-profile-section-social">
-                                <img src="/img/social.png" alt="social">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                <img src="img/portrait.jpg" alt="photo de profile" style="max-width: 100%;">
 
             </div>
-        </div>
-        </div>
-        </div>
-        </div>
-    </main>
+            <div
+                class="col-lg-6 col-md-6 col-sm-12 p-0 container-profile-droite d-flex flex-column justify-content-between align-items-center">
 
-    <%- include("partials/footer") -%>
+                <h3>Ton profil de skieur</h3>
+                <h1>
+                    <%= data.name %>
+                </h1>
+                <div
+                    class="container-profile-description m-3 d-flex flex-column justify-content-center align-items-center">
+                    <span>Description</span>
+                    <p class="p-3">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                        officia
+                        deserunt mollit anim id est laborum."</p>
+                </div>
+                <div class="container-profile-contact m-3 d-flex flex-column justify-content-center align-items-center">
+                    <p class="m-3"><span>Courriel</span> : <%= data.email %></p>
+                    <div>
+                        <img src="/img/add.png" alt="Ajoute comme ami" class="m-3">
+                        <img src="/img/message.png" alt="Envoi un message privé" class="m-3">
+                        <img src="/img/follow.png" alt="Suivre la personne" class="m-3">
+                    </div>
+                </div>
+                <div class="container-profile-edition d-flex justify-content-center align-items-center">
+                    <form method="" action="" class="m-3"><button type="button"
+                            class="btn btn-secondary rounded-circle"><img src="/img/spot.png" alt=""></button></form>
+                    <form method="" action="" class="m-3"><button type="button"
+                            class="btn btn-secondary rounded-circle"><i class="bi bi-pencil"></i></button></form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</main>
+<%- include("partials/footer") -%>

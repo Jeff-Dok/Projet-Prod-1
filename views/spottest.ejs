@@ -1,44 +1,56 @@
 <%- include("partials/header") -%>
 
-    <main class="spotAjoute mando">
+<main class="mando spotAjoute">
 
-        <div class="container">
-            <div class="row">
+    <div class="container">
+        <div class="row">
 
-                <div class="col-12 flex-container">
+            <div class="col-12 flex-container">
 
-                    <div class="col-6">
-                        <div class="box-connexion-profile-gauche pageProfilInside">
-                            <img src="img/mountain.jpg" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="box-connexion-profile-droite pageProfilInside">
-                            <h3>C'est fait !</h3>
-                            <h1>
-                                Ton spot est ajouté !
-                            </h1>
-
-                            <div class="box-connexion-profile-inside-description">
-                                <span>Détail de ton spot :</span>
-                                <p> <br>
-                                  <span>Nom : </span><%= data.name %> <br>
-                                    <span>Description : </span><%= data.description %> <br>
-                                    <span>Adresse : </span><%= data.address %> <br>
-                                    <span>Niveau de difficulté : </span><%= data.difficulty %> <br>
-                                    <span>Coordonnées : </span>Longitude : <%= data.coordinates[0] %>, Latitude : <%= data.coordinates[1] %><br>
-                                </p>
-                            </div>
-
-                        </div>
-
-                        </div>
+                <div class="col-6">
+                    <div class="box-connexion-profile-gauche pageProfilInside">
+                        <img src="img/mountain.jpg" alt="">
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </main>
+                <div class="col-6">
+                    <div class="box-connexion-profile-droite pageProfilInside">
+                        <h3>C'est fait !</h3>
+                        <h1>
+                            Ton spot est ajouté !
+                        </h1>
 
-    <%- include("partials/footer") -%>
+                        <div class="box-connexion-profile-inside-description">
+                            <span>Détail de ton spot :</span>
+                            <p> <br>
+                                <span>Nom : </span><%= data.name %> <br>
+                                <span>Description : </span><%= data.description %> <br>
+                                <span>Adresse : </span><%= data.address %> <br>
+                                <span>Niveau de difficulté : </span><%= data.difficulty %> <br>
+                                <span>Coordonnées : </span>Longitude : <%= data.coordinates[0] %>, Latitude :
+                                <%= data.coordinates[1] %><br>
+
+                            </p>
+                        </div>
+                        <div class="box-connexion-profile-inside-addon1">
+
+                            <form style="display: inline;" action="/editSpot" method="get">
+                                <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">EDIT</button>
+                            </form>
+                        </div>
+
+                        <div class="box-connexion-profile-inside-addon1">
+                            <form style="display: inline;" action="/delete/<%= data.id %>?_method=DELETE" method="POST">
+                                <button style="cursor: pointer;" type="submit"
+                                    class="btn btn-danger ml-2">Delete</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+<%- include("partials/footer") -%>

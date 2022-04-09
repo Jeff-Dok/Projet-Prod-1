@@ -19,6 +19,7 @@
     "nodemon": "^2.0.15",
     "paginate": "^0.2.0",
     "pagination": "^0.4.6",
+    "paginationjs": "^2.1.5",
     "path": "^0.12.7",
     "url": "^0.11.0"
   }

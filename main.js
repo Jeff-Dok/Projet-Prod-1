@@ -34,6 +34,7 @@ app.post("/signup", homeController.postSignup);
 /////////////////spot/////////////////
 
 app.get("/spottest", homeController.sendSpot);
+
 app.get("/spotform", homeController.sendSpotForm);
 app.post("/spotform", homeController.postSpotForm);
 
@@ -42,6 +43,8 @@ app.get("/allspot", homeController.getAllSpot);
 //------------------------------------------------------------------------------------------------------------//
 
 /////////////////id/////////////////
+
+//NON COMPLET ! DOIT SWAPPER AVEC LE CODE DE SAM//
 
 app.get("/spotdetail", homeController.sendID);
 app.get("/spotdetail/:id", homeController.getAnID_spot);

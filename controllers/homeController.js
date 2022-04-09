@@ -62,11 +62,15 @@ exports.postSpotForm = ("/spotform", (req, rep) => {
     const description = req.body.description;
     const address = req.body.address;
     const difficulty = req.body.difficulty;
+    const longitude = Number(req.body.longitude);
+    const latitude = Number(req.body.latitude);
+
     const data = {
         name: name,
         description: description,
         address: address,
         difficulty: difficulty,
+        coordinates: [longitude, latitude]
     };
 
     let token = req.session.skiApiToken;
@@ -102,11 +106,11 @@ exports.getAllSpot = (req, rep) => {
 
     let token = req.session.skiApiToken;
 
-    let pageNB = req.query.page || 1;
+    let pageNB = Number(req.query.page || 1);
 
     const config = {
         method: "get",
-        url: "https://ski-api.herokuapp.com/ski-spot?limit=5&page=" + pageNB,
+        url: "https://ski-api.herokuapp.com/ski-spot?limit=10&page=" + pageNB,
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -116,11 +120,24 @@ exports.getAllSpot = (req, rep) => {
 
     axios(config)
         .then(function (resultat) {
+
             req.session.spotData = resultat.data.skiSpots;
+
             let showSpots = resultat.data.skiSpots;
+            let paginationSpot = resultat.data.totalPages;
+
+            let pagePrevious = pageNB-1;
+            let pageNext = pageNB+1;
+
             console.log(showSpots);
+            console.log(paginationSpot);
+
             rep.render("allspot", {
-                showSpots
+                showSpots,
+                paginationSpot,
+                pageNB,
+                pagePrevious,
+                pageNext
             });
         })
 

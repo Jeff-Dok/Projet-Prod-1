@@ -1,48 +1,75 @@
 <%- include("partials/header") -%>
 
 <main class="spotFeed bobaFett">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 flex-container-between">
-                <% showSpots.forEach(e => { %>
-                <div class="container-feed">
-                    <img src="/img/mountain.jpg" alt="montagne">
-                    <div>
-                        <h3><%= e.name %></h3>
-                        <span>Description :</span>
-                        <p><%= e.description %></p>
-                        <span>Difficulté :</span>
-                        <p><%= e.difficulty %></p>
-                        <span>Adresse :</span>
-                        <p><%= e.address %></p>
-                        <br>
-                        <span>PLUS DE DETAILS :</span>
-                        <a href="/spotdetail/<%=e._id%>">OkylyDolyly</a>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 flex-container-between">
 
-                <% }) %>
+        <% showSpots.forEach(e => { %>
 
-            </div>
+        <div class="container-feed" onclick="location.href='#';" style="cursor: pointer;">
 
-            <!--FAIRE UNE NOUVELLE BOUCLE ICI POUR LA PAGINATION-->
-           <nav aria-label="paginationAllSpot">
-              <ul class="pagination justify-content-center">
-                <li class="page-item">
-                  <a class="page-link" href="#">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
-                <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-                <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav>
-            <!--------------------------------------------------->
+          <img src="/img/mountain.jpg" alt="montagne">
+          <div>
+            <h3><%= e.name %></h3>
+            <span>Description :</span>
+            <p><%= e.description %></p>
+            <span>Difficulté :</span>
+            <p><%= e.difficulty %></p>
+            <span>Adresse :</span>
+            <p><%= e.address %></p>
+            <span>Coordonnées :</span>
+            <p><%= e.coordinates %></p>
+            <br>
+            <span>PLUS DE DETAILS :</span>
+            <a href="/spotdetail/<%=e._id%>">OkylyDolyly</a>
 
+          </div>
         </div>
+
+        <% }) %>
+
+      </div>
+
+      <!---------------------PAGINATION--------------------->
+
+      <nav aria-label="paginationAllSpot" class="d-flex justify-content-center">
+        <ul class="pagination">
+
+          <% if (pagePrevious > 0 ) { %>
+
+          <li class="page-item">
+            <a class="page-link" href="?page=<%= pagePrevious %>" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+
+          <% } %>
+
+          <% for (let i = 0; i < paginationSpot; i++) { %>
+
+          <li class="page-item"><a class="page-link" href="?page=<%= i+1 %>"><%= i+1 %></a></li>
+
+          <% } %>
+
+          <% if (pageNext <= paginationSpot ) { %>
+            
+            <li class="page-item">
+
+            <a class="page-link" href="?page=<%= pageNext %>" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+
+            </li>
+
+            <% } %>
+        </ul>
+      </nav>
+
+      <!--------------------------------------------------->
+
     </div>
+  </div>
 
 </main>
 

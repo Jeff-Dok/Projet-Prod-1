@@ -27,20 +27,11 @@
                                     <span>Description : </span><%= data.description %> <br>
                                     <span>Adresse : </span><%= data.address %> <br>
                                     <span>Niveau de difficulté : </span><%= data.difficulty %> <br>
-                                    <!-- <%= data.coordinates %>-->
+                                    <span>Coordonnées : </span>Longitude : <%= data.coordinates[0] %>, Latitude : <%= data.coordinates[1] %><br>
                                 </p>
                             </div>
-                            <div class="box-connexion-profile-inside-addon1">
 
-                                <form style="display: inline;" action="/editSpot" method="get">
-                                    <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">EDIT</button>
-                                </form> </div>
-
-                            <div class="box-connexion-profile-inside-addon1">
-                                <form style="display: inline;" action="/delete/<%= data.id %>?_method=DELETE" method="POST">
-                                    <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
-                                </form>
-                            </div>
+                        </div>
 
                         </div>
                     </div>

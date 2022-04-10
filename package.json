@@ -16,6 +16,7 @@
     "express": "^4.17.3",
     "express-paginate": "^1.0.2",
     "express-session": "^1.17.2",
+    "method-override": "^3.0.0",
     "nodemon": "^2.0.15",
     "paginate": "^0.2.0",
     "pagination": "^0.4.6",

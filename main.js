@@ -3,6 +3,9 @@ const session = require("express-session");
 const app = express();
 const path = require("path");
 const homeController = require("./controllers/homeController");
+const methodOverride = require("method-override");
+
+app.use(methodOverride('_method'));
 
 app.use(
     session({
@@ -40,16 +43,15 @@ app.post("/spotform", homeController.postSpotForm);
 
 app.get("/allspot", homeController.getAllSpot);
 
-//------------------------------------------------------------------------------------------------------------//
-
-/////////////////id/////////////////
-
-//NON COMPLET ! DOIT SWAPPER AVEC LE CODE DE SAM//
-
-app.get("/spotdetail", homeController.sendID);
+// id
 app.get("/spotdetail/:id", homeController.getAnID_spot);
 
-//------------------------------------------------------------------------------------------------------------//
+// edit
+app.put("/allspot:id", homeController.editSpot);
+app.get('/editSpot:id', homeController.renderEdit);
+
+// delete
+app.delete("/allspot:id", homeController.deleteSpot);
 
 app.listen(3000, () => {
     console.log("Le serveur est sur le port 3000");

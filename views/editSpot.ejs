@@ -7,7 +7,7 @@
     </div>
 
 
-<form action="/editSpot" class="box-signup-signin height-signup"  method="post">
+<form action="/allspot<%= data._id %>?_method=put" class="box-signup-signin height-signup"  method="post">
 
                 <input type="text" id="name" name="name" value="<%= data.name %>">
                 <textarea type="text" id="description" name="description" value="<%= data.description %>"></textarea>

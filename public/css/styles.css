@@ -360,6 +360,16 @@ footer img {
     font-size: 0.75em;
     color: var(--darkblue);
 }
+.container-profile-contact button{
+    width:65px;
+    height:65px;
+    background-color: var(--lightblue);
+    border-color: var(--lightblue);
+}
+.container-profile-contact button:hover{
+    background-color: var(--cream-o);
+    border-color: var(--cream);
+}
 .container-profile-contact div img{
     width:30px;
 }
@@ -369,6 +379,10 @@ footer img {
 }
 .container-profile-edition form button > i{
     font-size:2em;
+}
+
+.container-profile-edition .bi-pencil{
+    color: var(--lightblue);
 }
 
 /*** ***** PAGE ERROR ***** ***/
@@ -396,7 +410,6 @@ footer img {
 }
 
 /* PAGE SPOT FEED */
-
 .container-feed {
     backdrop-filter: var(--blur);
     background-color: var(--cream-o);
@@ -429,4 +442,11 @@ footer img {
     font-family: GothamL;
     font-size: 0.75em;
     color: var(--darkblue);
+}
+/*** ***** ALL INPUTS ***** ***/
+input{
+    padding: 1em;
+}
+textarea{
+    padding: 1em;
 }

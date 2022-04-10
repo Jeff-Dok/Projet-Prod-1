@@ -18,7 +18,7 @@
                 <div
                     class="container-profile-description m-3 d-flex flex-column justify-content-center align-items-center">
                     <span>Description</span>
-                    <p class="p-3">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    <p class="p-3 d-flex flex-column justify-content-center align-items-center">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
                         nostrud
                         exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
@@ -29,11 +29,16 @@
                         deserunt mollit anim id est laborum."</p>
                 </div>
                 <div class="container-profile-contact m-3 d-flex flex-column justify-content-center align-items-center">
-                    <p class="m-3"><span>Courriel</span> : <%= data.email %></p>
+                    <p class="m-3"><span>Courriel</span> : <br> <%= data.email %></p>
                     <div>
-                        <img src="/img/add.png" alt="Ajoute comme ami" class="m-3">
+
+                        <button type="button" class="btn btn-secondary rounded-circle m-3"><img src="/img/add.png" alt="Ajoute comme ami"></button>
+                        <button type="button" class="btn btn-secondary rounded-circle m-3"><img src="/img/message.png" alt="Envoi un message priv/"></button>
+                        <button type="button" class="btn btn-secondary rounded-circle m-3"><img src="/img/follow.png" alt="Suivre la personne"></button>
+
+                        <!--<img src="/img/add.png" alt="Ajoute comme ami" class="m-3"> 
                         <img src="/img/message.png" alt="Envoi un message privé" class="m-3">
-                        <img src="/img/follow.png" alt="Suivre la personne" class="m-3">
+                        <img src="/img/follow.png" alt="Suivre la personne" class="m-3">-->
                     </div>
                 </div>
                 <div class="container-profile-edition d-flex justify-content-center align-items-center">

@@ -195,7 +195,6 @@ exports.getAnID_spot = (req, rep) => {
 
             let showSpots = response.data.skiSpots;
 
-            console.log('LE RESULTAT DE SHOWSPOTS EST : ' + showSpots);
             rep.render("spotdetail", {
                 showSpots
             });

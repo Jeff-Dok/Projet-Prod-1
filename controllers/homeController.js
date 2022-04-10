@@ -149,10 +149,6 @@ exports.getAllSpot = (req, rep) => {
 
 //--------------------------------------------------------------------------------------------------------------------//
 
-//////////////////////// !!!!!!! NON COMPLET! !!!!!!! //////////////////////// 
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-
 ////////////////ZONE GET AN ID ON SPOT/////////////////
 
 exports.getAnID_spot = (req, rep) => {
@@ -160,9 +156,6 @@ exports.getAnID_spot = (req, rep) => {
     let token = req.session.skiApiToken;
 
     const id = req.params.id;
-
-
-    /* console.log("Le id est = " + req.params.id); */
  
     const config = {
         method: "get",
@@ -178,13 +171,6 @@ exports.getAnID_spot = (req, rep) => {
         .then(function (resultat) {
 
             let showSpot = resultat.data.skiSpot;
-
-            /* req.session.spotData = resultat.data.skiSpots; */
-
-            /* console.log(resultat.data.skiSpot); */
-            /* console.log("Le resultat est = " + resultat);
-            console.log("Le data est = " + showSpots);
-            console.log(req.session.spotData); */
             
             rep.render("spotdetail", {showSpot});
         })
@@ -216,7 +202,6 @@ exports.renderEdit = (req, res) => {
     axios(config)
         .then(function (resultat) {
             let data = resultat.data.skiSpot;
-            /* req.session.spotData = resultat.data.skiSpots; */
             res.render("editSpot", {'data': data});
         })
 
@@ -243,7 +228,8 @@ exports.editSpot = (req, res) => {
         description: description,
         address: address,
         difficulty: difficulty,
-        coordinates: [longitude, latitude]
+        coordinates: [longitude, latitude],
+        
     };
 
     const config = {
@@ -258,8 +244,7 @@ exports.editSpot = (req, res) => {
     };
 
     axios(config)
-        .then((/* resultat */) => {
-            /* req.session.spotData = resultat.data.skiSpots; */
+        .then(() => {
             res.redirect('allspot');
         })
 
@@ -288,8 +273,7 @@ exports.deleteSpot = (req, res) => {
     };
 
     axios(config)
-        .then((/* resultat */) => {
-            /* req.session.spotData = resultat.data.skiSpots; */
+        .then(() => {
             res.redirect('allspot');
         })
 

@@ -283,6 +283,15 @@ footer img {
     font-size: 16px;
     outline: 1px solid var(--darkblue);
 }
+option{
+    font-family: GothamL;
+}
+optgroup{
+    text-transform: uppercase;
+    font-family: GothamB;
+    font-size: 1em;
+    color: var(--darkblue);    
+}
 
 /*** ————— ————— ***/
 

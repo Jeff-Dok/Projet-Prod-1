@@ -12,12 +12,13 @@
         <label for="name">Nom du spot</label>
         <input type="text" id="name" name="name" value="<%= data.name %>">
         <label for="description">Description</label>
-        <textarea type="text" id="description" name="description" value="<%= data.description %>"></textarea>
+        <textarea type="text" id="description" name="description"><%= data.description %></textarea>
         <label for="address">Adresse</label>
         <input type="text" id="address" name="address" value="<%= data.address %>">
         <label for="difficulty">Niveau de difficulté</label>
-        <select name="difficulty" id="difficulty" value="<%= data.difficulty %>">
-            <option value="Votre niveau"></option>
+        <select name="difficulty" id="difficulty" value="selected">
+            <option><%= data.difficulty %></option>
+            <optgroup value="options" label="Les niveaux disponibles :"></optgroup>
             <option value="facile">Facile</option>
             <option value="intermédiaire">Intermédiaire</option>
             <option value="difficile">Difficile</option>

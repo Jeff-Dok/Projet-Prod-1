@@ -1,21 +1,21 @@
 <%- include("partials/header") -%>
 
-<main class="mando">
+<main class="bobaFett mando">
 
-    <div class="col-12 flex-container-titre-form">
+    <div class="col-12 d-flex justify-content-center align-items-center mb-3">
 
-        <h1 class="titre-signup-signin">Edit ton spot</h1>
+        <h2 class="color-lb">Edit ton spot</h2>
     </div>
 
-
-    <form action="/allspot<%= data._id %>?_method=put" class="box-signup-signin height-signup" method="post">
-
+    <div class="col-12 d-flex justify-content-center align-items-center">
+    <form action="/allspot<%= data._id %>?_method=put" class="box-signup-signin d-flex flex-column" method="post">
+        <label for="name">Nom du spot</label>
         <input type="text" id="name" name="name" value="<%= data.name %>">
-
+        <label for="description">Description</label>
         <textarea type="text" id="description" name="description" value="<%= data.description %>"></textarea>
-
+        <label for="address">Adresse</label>
         <input type="text" id="address" name="address" value="<%= data.address %>">
-
+        <label for="difficulty">Niveau de difficulté</label>
         <select name="difficulty" id="difficulty" value="<%= data.difficulty %>">
             <option value="Votre niveau"></option>
             <option value="facile">Facile</option>
@@ -29,8 +29,9 @@
         <label for="coordinates">Coordonnées : Latitude</label>
         <input type="number" id="latitude" name="latitude" value="<%= data.coordinates[1] %>">
 
-        <button type="submit" class="btn btn-info btn-block mt-3">Change ton spot</button>
+        <button type="submit">Change ton spot</button>
     </form>
+    </div>
 </main>
 
 <%- include("partials/footer") -%>

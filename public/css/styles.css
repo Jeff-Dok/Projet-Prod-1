@@ -87,11 +87,18 @@ h3 {
     font-size: 1em !important;
 }
 
+p {
+    font-size: 0.75em;
+}
+
+p>span {
+    font-size: 1em;
+}
+
 .color-lb {
     color: var(--lightblue) !important;
 }
 
-/*** *****  ***** ***/
 /*** ***** HEADER & NAV ***** ***/
 header {
     width: 100%;
@@ -99,26 +106,31 @@ header {
     backdrop-filter: var(--blur);
     background-color: var(--bg-blur);
     position: fixed;
-    z-index:10;
+    z-index: 10;
     text-align: center;
 }
-nav>div>a:first-child{
-    width:10%;
+
+nav>div>a:first-child {
+    width: 10%;
 }
+
 nav ul {
-    width:80%;
-    display:flex;
+    width: 80%;
+    display: flex;
     justify-content: center;
 }
+
 nav ul li a {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 15px;
 }
+
 nav form {
     width: 10%;
 }
+
 .search-nav {
     height: 25px !important;
     background-color: var(--bg-blur) !important;
@@ -126,16 +138,19 @@ nav form {
     border: 1px solid var(--lightblue) !important;
     padding: 5px !important;
 }
-.bobaFett{
+
+.bobaFett {
     margin-top: 5rem;
 }
-.mando{
+
+.mando {
     height: 100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
+
 /*** ***** FOOTER ***** ***/
 footer div {
     color: var(--lightblue);
@@ -145,9 +160,11 @@ footer div {
     font-size: 8px;
     text-shadow: var(--shadow);
 }
+
 footer img {
     margin: 0.5em;
 }
+
 /*** ***** INDEX ***** ***/
 .logo-container {
     height: 100%;
@@ -238,6 +255,7 @@ footer img {
     font-family: GrandH;
     font-size: 16px;
     outline: 1px solid var(--darkblue);
+    padding-left: 10px;
 }
 
 .box-signup-signin input:focus {
@@ -265,6 +283,7 @@ footer img {
     font-size: 16px;
     outline: 1px solid var(--darkblue);
 }
+
 /*** ————— ————— ***/
 
 .box-signup-signin button {
@@ -293,37 +312,54 @@ footer img {
     text-decoration: none;
 }
 
+/*** ***** ALL INPUTS ***** ***/
+input {
+    padding: 1em;
+}
+
+textarea {
+    padding: 1em;
+}
+
 /*** ***** PROFILE ***** ***/
-.container-profile{
-    background-color:var(--cream-o);
+.container-profile {
+    background-color: var(--cream-o);
     backdrop-filter: var(--blur);
     border-radius: var(--radius);
-    overflow:hidden;
-    max-height:80vh !important;
+    overflow: hidden;
+    max-height: 80vh !important;
     height: 100%;
 }
-.container-profile-gauche{
-    height:100%;
+
+.container-profile-gauche {
+    height: 100%;
 }
-.container-profile-gauche img{
-    width:100%;
-    max-height:80vh;
-    display:block;
+
+.container-profile-gauche img {
+    width: 100%;
+    max-height: 70vh;
+    min-height: 100%;
+    display: block;
     object-fit: cover;
 }
-.container-profile-droite{
-    height:100%;  
+
+.container-profile-droite {
+    height: 100%;
 }
-.container-profile-droite h2{
+
+.container-profile-droite h2 {
     color: var(--darkblue);
 }
-.container-profile-droite h3{
+
+.container-profile-droite h3 {
     color: var(--gray);
     font-weight: bold;
 }
-.container-profile-description{
+
+.container-profile-description {
     width: 90%;
 }
+
 .container-profile-description span {
     text-align: center;
     text-transform: uppercase;
@@ -331,57 +367,68 @@ footer img {
     font-size: 1em;
     color: var(--darkblue);
 }
+
 .container-profile-description p {
     text-align: center;
     font-family: GothamL;
-    font-size: 0.75em;
     color: var(--darkblue);
     border: 1px solid var(--gray);
     border-radius: var(--radius);
     height: 15vh;
     overflow: auto;
 }
+
 .container-profile-contact {
-    width:90%;
+    width: 90%;
     border: 1px solid var(--gray);
     border-radius: var(--radius);
 }
-.container-profile-contact p span {
-    text-align: center;
-    text-transform: uppercase;
-    font-family: GothamB;
-    font-size: 1em;
-    color: var(--darkblue);
-}
+
 .container-profile-contact p {
     text-align: center;
     font-family: GothamL;
-    font-size: 0.75em;
     color: var(--darkblue);
 }
-.container-profile-contact button{
-    width:65px;
-    height:65px;
+
+.container-profile-contact p span {
+    text-transform: uppercase;
+    font-family: GothamB;
+}
+
+.container-profile-contact button {
+    width: 65px;
+    height: 65px;
     background-color: var(--lightblue);
     border-color: var(--lightblue);
 }
-.container-profile-contact button:hover{
+
+.container-profile-contact button:hover {
     background-color: var(--cream-o);
     border-color: var(--cream);
 }
-.container-profile-contact div img{
-    width:30px;
-}
-.container-profile-edition form button{
-    width:65px;
-    height:65px;
-}
-.container-profile-edition form button > i{
-    font-size:2em;
+
+.container-profile-contact div img {
+    width: 30px;
 }
 
-.container-profile-edition .bi-pencil{
+.container-profile-edition button {
+    width: 65px;
+    height: 65px;
+}
+
+.container-profile-edition button a > i {
+    font-size: 2em;
+}
+
+.container-profile-edition .bi-pencil {
     color: var(--lightblue);
+}
+
+.container-profile-edition p span {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: GothamB;
+    color: var(--darkblue);
 }
 
 /*** ***** PAGE ERROR ***** ***/
@@ -395,25 +442,14 @@ footer img {
     font-size: 1.5em;
 }
 
-/*** ***** PAGE SPOT AJOUTE ***** ***/
-.spotAjoute .box-connexion-profile-inside-description {
-    align-items: center;
-    justify-content: center;
-    padding-top: 1rem;
-}
+/*** ***** PAGE SPOT FEED ***** ***/
 
-.spotAjoute .box-connexion-profile-inside-addon1 {
-    align-items: center;
-    justify-content: center;
-    padding-top: 1.5rem;
-}
-
-/* PAGE SPOT FEED */
 .container-feed {
     backdrop-filter: var(--blur);
     background-color: var(--cream-o);
     border-radius: var(--radius);
     padding: 1.5rem;
+    color: var(--darkblue);
 }
 
 .container-feed img {
@@ -434,18 +470,24 @@ footer img {
     text-transform: uppercase;
     font-family: GothamB;
     font-size: 1em;
-    color: var(--darkblue);
 }
 
 .container-feed div p {
     font-family: GothamL;
-    font-size: 0.75em;
+}
+
+/*** ***** PAGE SPOT DETAILS ***** ***/
+.container-spot-valide {
+    text-align: center;
+    font-family: GothamL;
     color: var(--darkblue);
+    border: 1px solid var(--gray);
+    border-radius: var(--radius);
 }
-/*** ***** ALL INPUTS ***** ***/
-input{
-    padding: 1em;
-}
-textarea{
-    padding: 1em;
+
+.container-spot-valide p span {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: GothamB;
+    color: var(--darkblue);
 }

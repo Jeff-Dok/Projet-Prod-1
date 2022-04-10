@@ -1,0 +1,43 @@
+<%- include("partials/header") -%>
+
+    <main class="">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-12 flex-container">
+
+                    <div class="col-6">
+                        <div class="box-connexion-profile-gauche pageProfilInside">
+                            <img src="img/mountain.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-12 flex-container-between">
+                            
+                        <div class="container-feed">
+                            <img src="/img/mountain.jpg" alt="montagne">
+                            <div>
+
+                                <h3><%= showSpot.name %></h3>
+                                <span>Description :</span>
+                                <p><%= showSpot.description %></p>
+                                <span>Difficulté :</span>
+                                <p><%= showSpot.difficulty %></p>
+                                <span>Adresse :</span>
+                                <p><%= showSpot.address %></p>
+                                <span>Coordinates :</span>
+                                <p><%= showSpot.coordinates %></p>
+                                <br>
+                                <p>RETOURNEZ VERS <span><a href="/allspot">LE FEED</a></span></p>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <%- include("partials/footer") -%>

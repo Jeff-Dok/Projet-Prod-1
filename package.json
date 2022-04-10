@@ -23,5 +23,14 @@
     "paginationjs": "^2.1.5",
     "path": "^0.12.7",
     "url": "^0.11.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeff-Dok/Projet-Prod-1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jeff-Dok/Projet-Prod-1/issues"
+  },
+  "homepage": "https://github.com/Jeff-Dok/Projet-Prod-1#readme"
 }

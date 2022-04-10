@@ -1,5 +1,5 @@
 <%- include("partials/header") -%>
-<main class="bobaFett">
+<main class="bobaFett mando">
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center container-profile m-3">
             <div
@@ -10,7 +10,7 @@
             <div
                 class="col-lg-6 col-md-6 col-sm-12 p-0 container-profile-droite d-flex flex-column justify-content-between align-items-center">
 
-                <h3>Ton profil de skieur</h3>
+                <h3 class="mt-3">Ton profil de skieur</h3>
                 <h1>
                     <%= data.name %>
                 </h1>
@@ -42,10 +42,10 @@
                     </div>
                 </div>
                 <div class="container-profile-edition d-flex justify-content-center align-items-center">
-                    <form method="" action="" class="m-3"><button type="button"
-                            class="btn btn-secondary rounded-circle"><img src="/img/spot.png" alt=""></button></form>
-                    <form method="" action="" class="m-3"><button type="button"
-                            class="btn btn-secondary rounded-circle"><i class="bi bi-pencil"></i></button></form>
+                    <button type="button"
+                            class="btn btn-secondary rounded-circle m-3"><a href="/allspot"><img src="/img/spot.png" alt=""></a></button>
+                   <button type="button"
+                            class="btn btn-secondary rounded-circle m-3"><a href="/spotform"><i class="bi bi-pencil"></i></a></button>
                 </div>
             </div>
         </div>

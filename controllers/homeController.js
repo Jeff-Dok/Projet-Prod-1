@@ -86,7 +86,6 @@ exports.postSpotForm = (req, rep) => {
             rep.redirect("spotAdded");
         })
         .catch(error => {
-            console.log("error is " + error);
             rep.redirect("error");
         });
 };
@@ -111,8 +110,8 @@ exports.getAllSpot = (req, rep) => {
             let showSpots = resultat.data.skiSpots;
             let paginationSpot = resultat.data.totalPages;
 
-            let pagePrevious = pageNB-1;
-            let pageNext = pageNB+1;
+            let pagePrevious = pageNB - 1;
+            let pageNext = pageNB + 1;
 
             rep.render("allspot", {
                 showSpots,
@@ -123,7 +122,6 @@ exports.getAllSpot = (req, rep) => {
             });
         })
         .catch(error => {
-            console.log("error is " + error);
             rep.redirect("error");
         });
 };
@@ -131,10 +129,10 @@ exports.getAllSpot = (req, rep) => {
 exports.getAnID_spot = (req, rep) => {
     let token = req.session.skiApiToken;
     const id = req.params.id;
- 
+
     const config = {
         method: "get",
-        url: "https://ski-api.herokuapp.com/ski-spot/"+id,
+        url: "https://ski-api.herokuapp.com/ski-spot/" + id,
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -144,10 +142,11 @@ exports.getAnID_spot = (req, rep) => {
     axios(config)
         .then(function (resultat) {
             let showSpot = resultat.data.skiSpot;
-            rep.render("spotdetail", {showSpot});
+            rep.render("spotdetail", {
+                showSpot
+            });
         })
         .catch(error => {
-            console.log("error is " + error);
             rep.redirect("error");
         });
 };
@@ -155,10 +154,10 @@ exports.getAnID_spot = (req, rep) => {
 exports.renderEdit = (req, res) => {
     let token = req.session.skiApiToken;
     const id = req.params.id;
- 
+
     const config = {
         method: "get",
-        url: "https://ski-api.herokuapp.com/ski-spot/"+id,
+        url: "https://ski-api.herokuapp.com/ski-spot/" + id,
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -168,10 +167,11 @@ exports.renderEdit = (req, res) => {
     axios(config)
         .then(function (resultat) {
             let data = resultat.data.skiSpot;
-            res.render("editSpot", {'data': data});
+            res.render("editSpot", {
+                'data': data
+            });
         })
         .catch(error => {
-            console.log("error is " + error);
             res.redirect("error");
         });
 };
@@ -193,11 +193,11 @@ exports.editSpot = (req, res) => {
         address: address,
         difficulty: difficulty,
         coordinates: [longitude, latitude],
-        
+
     };
     const config = {
         method: "put",
-        url: "http://ski-api.herokuapp.com/ski-spot/"+id,
+        url: "http://ski-api.herokuapp.com/ski-spot/" + id,
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -210,7 +210,6 @@ exports.editSpot = (req, res) => {
             res.redirect('allspot');
         })
         .catch(error => {
-            console.log("error is " + error);
             res.redirect("error");
         });
 };
@@ -221,7 +220,7 @@ exports.deleteSpot = (req, res) => {
 
     const config = {
         method: "delete",
-        url: "http://ski-api.herokuapp.com/ski-spot/"+id,
+        url: "http://ski-api.herokuapp.com/ski-spot/" + id,
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -233,7 +232,6 @@ exports.deleteSpot = (req, res) => {
             res.redirect('allspot');
         })
         .catch(error => {
-            console.log("error is " + error);
             res.redirect("error");
         });
 };

@@ -9,22 +9,32 @@ app.use(express.json());
 
 exports.getRedirect = (req, rep) => {
     rep.redirect("/");
-}
+};
 
 exports.sendIndex = (request, response) => {
     response.render("index");
 };
+
 exports.sendSignup = (request, response) => {
     response.render("signup");
 };
+
 exports.sendSignin = (request, response) => {
     response.render("signin");
 };
 
+exports.sendError = (request, response) => {
+    response.render("error");
+};
+
+exports.sendSpotForm = (request, response) => {
+    response.render("spotform");
+};
+
 exports.sendProfile = (request, response) => {
     const data = request.session.profileData;
-    if (data == undefined) {
-        response.redirect("signin")
+    if (data === undefined) {
+        response.redirect("signin");
     } else {
         console.log("Rendering profile with token: " + data.token);
         response.render("profile", {
@@ -33,30 +43,18 @@ exports.sendProfile = (request, response) => {
     }
 };
 
-exports.sendError = (request, response) => {
-    response.render("error");
-};
-
-//--------------------------------------------------------------------------------------------------------------------//
-
-///////////////////ZONE SPOT////////////////////
-
-exports.sendSpotForm = (request, response) => {
-    response.render("spotform");
-};
-
 exports.sendSpot = (request, response) => {
     const data = request.session.spotData;
-    if (data == undefined) {
+    if (data === undefined) {
         response.redirect("spotform");
     } else {
-        response.render("spotajoute", {
+        response.render("spotAdded", {
             'data': data
         });
     }
 };
 
-exports.postSpotForm = ("/spotform", (req, rep) => {
+exports.postSpotForm = (req, rep) => {
     const name = req.body.name;
     const description = req.body.description;
     const address = req.body.address;
@@ -71,9 +69,7 @@ exports.postSpotForm = ("/spotform", (req, rep) => {
         difficulty: difficulty,
         coordinates: [longitude, latitude]
     };
-
     let token = req.session.skiApiToken;
-
     const config = {
         method: "post",
         url: "https://ski-api.herokuapp.com/ski-spot",
@@ -84,27 +80,19 @@ exports.postSpotForm = ("/spotform", (req, rep) => {
         },
         data: data,
     };
-
     axios(config)
         .then(function (response) {
             req.session.spotData = response.data.skiSpot;
-            rep.redirect("spotajoute");
+            rep.redirect("spotAdded");
         })
-
         .catch(error => {
             console.log("error is " + error);
-            rep.redirect("error")
+            rep.redirect("error");
         });
-});
-
-//--------------------------------------------------------------------------------------------------------------------//
-
-////////////////ZONE ALL SPOT/////////////////
+};
 
 exports.getAllSpot = (req, rep) => {
-
     let token = req.session.skiApiToken;
-
     let pageNB = Number(req.query.page || 1);
 
     const config = {
@@ -116,10 +104,8 @@ exports.getAllSpot = (req, rep) => {
             Authorization: token
         },
     };
-
     axios(config)
         .then(function (resultat) {
-
             req.session.spotData = resultat.data.skiSpots;
 
             let showSpots = resultat.data.skiSpots;
@@ -127,9 +113,6 @@ exports.getAllSpot = (req, rep) => {
 
             let pagePrevious = pageNB-1;
             let pageNext = pageNB+1;
-
-            console.log(showSpots);
-            console.log(paginationSpot);
 
             rep.render("allspot", {
                 showSpots,
@@ -139,53 +122,14 @@ exports.getAllSpot = (req, rep) => {
                 pageNext
             });
         })
-
-        .catch(error => {
-            console.log("error is " + error);
-            rep.redirect("error")
-        });
-};
-
-//--------------------------------------------------------------------------------------------------------------------//
-
-////////////////ZONE GET AN ID ON SPOT/////////////////
-
-exports.getAnID_spot = (req, rep) => {
-
-    let token = req.session.skiApiToken;
-
-    const id = req.params.id;
- 
-    const config = {
-        method: "get",
-        url: "https://ski-api.herokuapp.com/ski-spot/"+id,
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: token
-        }
-    };
-
-    axios(config)
-        .then(function (resultat) {
-
-            let showSpot = resultat.data.skiSpot;
-            
-            rep.render("spotdetail", {showSpot});
-        })
-
         .catch(error => {
             console.log("error is " + error);
             rep.redirect("error");
         });
 };
-//--------------------------------------------------------------------------------------------------------------------//
 
-////////////////ZONE EDIT SPOT/////////////////
-
-exports.renderEdit = (req, res) => {
+exports.getAnID_spot = (req, rep) => {
     let token = req.session.skiApiToken;
-
     const id = req.params.id;
  
     const config = {
@@ -197,16 +141,38 @@ exports.renderEdit = (req, res) => {
             Authorization: token
         }
     };
+    axios(config)
+        .then(function (resultat) {
+            let showSpot = resultat.data.skiSpot;
+            rep.render("spotdetail", {showSpot});
+        })
+        .catch(error => {
+            console.log("error is " + error);
+            rep.redirect("error");
+        });
+};
 
+exports.renderEdit = (req, res) => {
+    let token = req.session.skiApiToken;
+    const id = req.params.id;
+ 
+    const config = {
+        method: "get",
+        url: "https://ski-api.herokuapp.com/ski-spot/"+id,
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: token
+        }
+    };
     axios(config)
         .then(function (resultat) {
             let data = resultat.data.skiSpot;
             res.render("editSpot", {'data': data});
         })
-
         .catch(error => {
             console.log("error is " + error);
-            rep.redirect("error");
+            res.redirect("error");
         });
 };
 
@@ -214,7 +180,6 @@ exports.editSpot = (req, res) => {
     let token = req.session.skiApiToken;
 
     const id = req.params.id;
-
     const name = req.body.name;
     const description = req.body.description;
     const address = req.body.address;
@@ -230,7 +195,6 @@ exports.editSpot = (req, res) => {
         coordinates: [longitude, latitude],
         
     };
-
     const config = {
         method: "put",
         url: "http://ski-api.herokuapp.com/ski-spot/"+id,
@@ -241,21 +205,15 @@ exports.editSpot = (req, res) => {
         },
         data: data
     };
-
     axios(config)
         .then(() => {
             res.redirect('allspot');
         })
-
         .catch(error => {
             console.log("error is " + error);
-            rep.redirect("error");
+            res.redirect("error");
         });
 };
-
-//--------------------------------------------------------------------------------------------------------------------//
-
-////////////////ZONE DELETE SPOT/////////////////
 
 exports.deleteSpot = (req, res) => {
     const token = req.session.skiApiToken;
@@ -270,25 +228,20 @@ exports.deleteSpot = (req, res) => {
             Authorization: token
         }
     };
-
     axios(config)
         .then(() => {
             res.redirect('allspot');
         })
-
         .catch(error => {
             console.log("error is " + error);
-            rep.redirect("error");
+            res.redirect("error");
         });
 };
-
-//--------------------------------------------------------------------------------------------------------------------//
-
-////////////////ZONE SIGN IN/////////////////
 
 exports.postSignin = ("/signin", (req, rep) => {
     const email = req.body.email;
     const password = req.body.password;
+
     const data = {
         email: email,
         password: password,
@@ -305,6 +258,7 @@ exports.postSignin = ("/signin", (req, rep) => {
     axios(config)
         .then(function (response) {
             let token = response.data.token;
+
             const data = {
                 token: token,
             };
@@ -319,7 +273,6 @@ exports.postSignin = ("/signin", (req, rep) => {
                 },
                 data: data,
             };
-
             axios(config)
                 .then(function (response) {
                     req.session.profileData = response.data;
@@ -327,26 +280,19 @@ exports.postSignin = ("/signin", (req, rep) => {
                 })
                 .catch(error => rep.redirect("error"));
         })
-
         .catch(error => rep.redirect("error"));
 });
-
-//--------------------------------------------------------------------------------------------------------------------//
-
-////////////////ZONE SIGN UP/////////////////
 
 exports.postSignup = ("/signup", (req, rep) => {
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
-    //
 
     const initialData = {
         name: name,
         email: email,
         password: password,
     };
-
     const config = {
         method: "post",
         url: "https://ski-api.herokuapp.com/signup",
@@ -356,7 +302,6 @@ exports.postSignup = ("/signup", (req, rep) => {
         },
         data: initialData,
     };
-
     axios(config)
         .then(function () {
             const config = {
@@ -385,7 +330,6 @@ exports.postSignup = ("/signup", (req, rep) => {
                         },
                         data: data,
                     };
-
                     axios(config)
                         .then(function (response) {
                             req.session.profileData = response.data;

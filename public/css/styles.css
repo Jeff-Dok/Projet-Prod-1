@@ -229,7 +229,6 @@ footer img {
 }
 
 /*** ***** SIGN UP & SIGN IN ***** ***/
-
 .box-signup-signin {
     width: 27%;
     backdrop-filter: var(--blur);
@@ -451,7 +450,6 @@ textarea {
 }
 
 /*** ***** PAGE SPOT FEED ***** ***/
-
 .container-feed {
     backdrop-filter: var(--blur);
     background-color: var(--cream-o);

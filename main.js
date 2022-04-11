@@ -36,7 +36,7 @@ app.post("/signup", homeController.postSignup);
 
 /////////////////spot/////////////////
 
-app.get("/spottest", homeController.sendSpot);
+app.get("/spotajoute", homeController.sendSpot);
 
 app.get("/spotform", homeController.sendSpotForm);
 app.post("/spotform", homeController.postSpotForm);

@@ -50,7 +50,7 @@ exports.sendSpot = (request, response) => {
     if (data == undefined) {
         response.redirect("spotform");
     } else {
-        response.render("spottest", {
+        response.render("spotajoute", {
             'data': data
         });
     }
@@ -88,7 +88,7 @@ exports.postSpotForm = ("/spotform", (req, rep) => {
     axios(config)
         .then(function (response) {
             req.session.spotData = response.data.skiSpot;
-            rep.redirect("spottest");
+            rep.redirect("spotajoute");
         })
 
         .catch(error => {

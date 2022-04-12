@@ -1,13 +1,5 @@
-const express = require('express');
-const app = express();
-
-app.use(express.urlencoded({
-    extended: true
-}));
-app.use(express.json());
-
-exports.getRedirect = (req, rep) => {
-    rep.redirect("/");
+exports.getRedirect = (request, response) => {
+    response.redirect("/");
 };
 
 exports.sendIndex = (request, response) => {

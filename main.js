@@ -1,9 +1,14 @@
 const express = require("express");
+const dotenv = require('dotenv');
+dotenv.config({path: './config.env'});
+const port = process.env.PORT || 5000;
 const session = require("express-session");
+const router = require('./routes/router');
 const app = express();
 const path = require("path");
-const homeController = require("./controllers/homeController");
+const methodOverride = require("method-override");
 
+app.use(methodOverride('_method'));
 app.use(
     session({
         secret: "SecretToken",
@@ -16,20 +21,8 @@ app.use(
 );
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "public")));
+app.use(router);
 
 app.set("view engine", "ejs");
 
-app.get("/", homeController.sendIndex);
-app.get("/index", homeController.getRedirect);
-app.get("/signup", homeController.sendSignup);
-app.get("/signin", homeController.sendSignin);
-app.get("/profile", homeController.sendProfile);
-app.get("/error", homeController.sendError);
-
-app.post("/signin", homeController.postSignin);
-
-app.post("/signup", homeController.postSignup);
-
-app.listen(3000, () => {
-    console.log("Le serveur est sur le port 3000");
-});
+app.listen(port, console.log(`Notre serveur tourne sur http://localhost:${port}`)); 

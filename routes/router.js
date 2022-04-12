@@ -1,17 +1,19 @@
 const express = require('express');
 const route = express.Router();
 const homeController = require("../controllers/homeController");
+const api = require("../controllers/api");
 
-route.get("/", homeController.sendIndex);
-route.get("/index", homeController.getRedirect);
-route.get("/signup", homeController.sendSignup);
-route.get("/signin", homeController.sendSignin);
+route.get("/", api.sendIndex);
+route.get("/index", api.getRedirect);
+route.get("/signup", api.sendSignup);
+route.get("/signin", api.sendSignin);
+route.get("/spotform", api.sendSpotForm);
+route.get("/error", api.sendError);
+
 route.get("/profile", homeController.sendProfile);
-route.get("/error", homeController.sendError);
 route.post("/signin", homeController.postSignin);
 route.post("/signup", homeController.postSignup);
 route.get("/spotAdded", homeController.sendSpot);
-route.get("/spotform", homeController.sendSpotForm);
 route.post("/spotform", homeController.postSpotForm);
 route.get("/allspot", homeController.getAllSpot);
 route.get("/spotdetail/:id", homeController.getAnID_spot);
